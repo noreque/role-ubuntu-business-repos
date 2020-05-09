@@ -1,0 +1,25 @@
+---
+# tasks file for noreque.role-ubuntu-business-repos
+
+- name: Add Anydesk Apt signing key
+  apt_key:
+    id: A94E6D475E1C299B784EB991D04FDE02D675976C
+    url: https://keys.anydesk.com/repos/DEB-GPG-KEY
+    state: present
+
+- name: Add anydesk repository
+  apt_repository:
+    repo: deb http://deb.anydesk.com/ all main
+    state: present
+
+# FIXME: Until Libreoffice has a repository for forcal
+- name: Add Libreoffice repository
+  apt_repository:
+    repo: ppa:libreoffice/ppa
+    codename: eoan
+    state: present
+
+- name: Add Nextcloud repository
+  apt_repository:
+    repo: ppa:nextcloud-devs/client
+    state: present
